@@ -1,0 +1,137 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Ahmad Nur Soleh | Robin Karp | Boyer Moore</title>
+    <link rel="stylesheet" href="/assets/application.css" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="/assets/application.js"></script>
+  </head>
+  <body>
+    <div id="heading">
+      <div class="container">
+        <div class="jumbotron">
+          <h1>Karp Moore !</h1>
+          <p>Selamat Datang di Aplikasi Karp Moore, applikasi ini dibuat bertujuan untuk melakukan perbandingan algoritma String Matching Robin Karp dan Boyer Moore,</p>
+          <p class="pull-right">Ahmad Nur Soleh, S.Kom</p>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="well">
+        <div class"col-md-12" id="input">
+          <h1 id="inputTitle">Input Text</h1>
+          <hr />
+          <div id="result", style="display: none;">
+            <div class="form-horizontal" role="form">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>nGram Text Pertama</label>
+                  <div class="col-md-12">
+                    <textarea class="form-control" disabled id="first_text_ngram" rows="20" style="resize: none;"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Hash Text Pertama</label>
+                  <div class="col-md-12">
+                    <textarea class="form-control" disabled id="first_text_hash" rows="20" style="resize: none;"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Fingerprint Text Pertama</label>
+                  <div class="col-md-12">
+                    <textarea class="form-control" disabled id="first_text_fingerprint" rows="20" style="resize: none;"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>nGram Text Kedua</label>
+                  <div class="col-md-12">
+                    <textarea class="form-control" disabled id="second_text_ngram" rows="20" style="resize: none;"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Hash Text Kedua</label>
+                  <div class="col-md-12">
+                    <textarea class="form-control" disabled id="second_text_hash" rows="20" style="resize: none;"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Fingerprint Text Kedua</label>
+                  <div class="col-md-12">
+                    <textarea class="form-control" disabled id="second_text_fingerprint" rows="20" style="resize: none;"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <hr />
+              <div class="form-group">
+                <label>Similarity Fingerprint</label>
+                <div class="col-md-12">
+                  <textarea class="form-control" disabled id="similarity_finger_print" rows="20" style="resize: none;"></textarea>
+                </div>
+              </div>
+              <br/>
+              <div class="form-group">
+                <label class="col-sm-1 control-label">Duplication</label>
+                <div class="col-md-11">
+                  <input type="text" class="form-control" id="duplication" disabled>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <form method="post" action="#" id="inputForm" class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="ngram" class="col-sm-1 control-label">N-Gram</label>
+              <div class="col-md-3">
+                <select name="ngram" id="ngram" class="form-control">
+                  <option value="">Masukan N-Gram</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+              </div>
+            </div>
+            <hr />
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="first_text">Text Pertama</label>
+                <div class="col-md-12">
+                  <textarea class="form-control" name="first_text" id="first_text" placeholder="Masukan text pembanding..." rows="20" style="resize: none;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="second_text">Text Kedua</label>
+                <div class="col-md-12">
+                  <textarea class="form-control" name="second_text" id="second_text" placeholder="Masukan text yang akan dibandingkan...." rows="20" style="resize: none;"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <br/>
+            <div class="form-group">
+              <div class="text-center">
+                <button type="submit" id="submit" class="btn btn-primary btn-lg">Kalkulasi</button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
