@@ -40,13 +40,17 @@ class RobinKarp
 
   def check_fingerprint hashes
     fingerprints = []
+    done = false
     hashes.each do |hash|
       unless fingerprints.empty?
         fingerprints.each do |fingerprint|
-          next if fingerprint == hash
+          if fingerprint == hash
+            done = true
+          end
         end
       end
-      fingerprints << hash
+      fingerprints << hash unless done
+      done = false
     end
     fingerprints
   end
