@@ -20,15 +20,14 @@ $(document).ready(function(){
             $("#inputTitle").text("Result");
             $("#result").show();
             $("#input").fadeIn("slow", function(){
-              $("#first_text_ngram").val(data.first_text_ngram);
-              $("#second_text_ngram").val(data.second_text_ngram);
-              $("#first_text_hash").val(data.first_text_hashes);
-              $("#second_text_hash").val(data.second_text_hashes);
-              $("#first_text_fingerprint").val(data.first_text_fingerprint);
-              $("#second_text_fingerprint").val(data.second_text_fingerprint);
-              $("#similarity_finger_print").val(data.similar_fingerprint);
-              $("#duplication").val(data.result);
-              console.log(data);
+              $("#first_text_ngram").val(data.robin_karp.first_text_ngram);
+              $("#second_text_ngram").val(data.robin_karp.second_text_ngram);
+              $("#first_text_hash").val(data.robin_karp.first_text_hashes);
+              $("#second_text_hash").val(data.robin_karp.second_text_hashes);
+              $("#first_text_fingerprint").val(data.robin_karp.first_text_fingerprint);
+              $("#second_text_fingerprint").val(data.robin_karp.second_text_fingerprint);
+              $("#similarity_finger_print").val(data.robin_karp.similar_fingerprint);
+              $("#duplication").val(data.robin_karp.result);
             })
             $("#inputForm").hide();
           },

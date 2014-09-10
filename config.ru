@@ -4,6 +4,7 @@ require 'json'
 $:.unshift(File.join(File.dirname(__FILE__), 'lib'))
 require 'string'
 require 'robin_karp'
+require 'boyer_moore'
 
 map '/assets' do
   environment = Sprockets::Environment.new
@@ -35,15 +36,21 @@ map '/calculate' do
     response_header = response_code == 200 ? {"Content-Type" => "application/json"} : {"Content-Type" => "text/html"}
     request_hash = req.POST.inject({}){|memo, (k, v)| memo[k.to_sym] = k == 'ngram' ? v.to_i : v; memo}
     robin_karp = RobinKarp.new(request_hash)
+    boyer_moore = BoyerMoore.new(request_hash[:second_text], request_hash[:first_text])
     response_body = {
-      first_text_ngram: robin_karp.first_text.downcase.to_ngram(request_hash[:ngram]).to_s,
-      second_text_ngram: robin_karp.second_text.downcase.to_ngram(request_hash[:ngram]).to_s,
-      first_text_hashes: robin_karp.first_text_hashes.to_s,
-      second_text_hashes: robin_karp.second_text_hashes.to_s, 
-      first_text_fingerprint: robin_karp.first_text_fingerprints.to_s,
-      second_text_fingerprint: robin_karp.second_text_fingerprints.to_s,
-      similar_fingerprint: robin_karp.similar_fingerprint.to_s,
-      result: robin_karp.coeffision_similarity
+      robin_karp: {
+        first_text_ngram: robin_karp.first_text.downcase.to_ngram(request_hash[:ngram]).to_s,
+        second_text_ngram: robin_karp.second_text.downcase.to_ngram(request_hash[:ngram]).to_s,
+        first_text_hashes: robin_karp.first_text_hashes.to_s,
+        second_text_hashes: robin_karp.second_text_hashes.to_s, 
+        first_text_fingerprint: robin_karp.first_text_fingerprints.to_s,
+        second_text_fingerprint: robin_karp.second_text_fingerprints.to_s,
+        similar_fingerprint: robin_karp.similar_fingerprint.to_s,
+        result: robin_karp.coeffision_similarity
+      },
+      boyer_moore: {
+        result: boyer_moore.result
+      }
     }
     [
       response_code,
