@@ -31,14 +31,14 @@ class StringTest < Minitest::Test
   def test_boyer_moore_badcharacter_heuristic
     # Hello World is 11 char
     hash = {
-      "H" => 10,
-      "e" => 9,
-      "l" => 1,
-      "o" => 3,
+      "H" => 0,
+      "e" => 1,
+      "l" => 9,
+      "o" => 7,
       " " => 5,
-      "W" => 4,
-      "r" => 2,
-      "d" => 0
+      "W" => 6,
+      "r" => 8,
+      "d" => 10
     }
     assert_equal hash, "Hello World".to_boyer_moore_badcharacter_heuristic
   end
