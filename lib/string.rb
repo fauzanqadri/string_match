@@ -53,4 +53,37 @@ class String
     end
     hash_count
   end
+
+  def to_boyer_moore_badcharacter_heuristic
+    (0...(self.size)).inject({}){|hash, i| hash[self[i]] = (self.size - i - 1); hash}
+  end
+
+  def to_boyer_moore_suffixes
+    k = 0
+    1.upto((self.size - 1)).inject([0]) do |hash, i|
+      while (k > 0) && (self[k] != self[i])
+        k = hash[k-1]
+      end
+      k += 1 if self[k] == self[i]
+      hash << k
+    end
+  end
+
+  def to_boyer_moore_goodsuffix_heuristic
+    reversed = self.dup.reverse
+    result = []
+    prefix_normal = self.to_boyer_moore_suffixes
+    prefix_reversed = reversed.to_boyer_moore_suffixes
+
+    0.upto(self.size) do |i|
+      result[i] = size - prefix_normal[size-1]
+    end
+
+    0.upto(self.size - 1) do |i|
+      j = self.size - prefix_reversed[i]
+      k = i - prefix_reversed[i]+1
+      result[j] = k if result[j] > k
+    end
+    result
+  end
 end
