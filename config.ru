@@ -15,14 +15,15 @@ end
 
 map '/' do
   run lambda {|env|
-    [
-      200,
-      {
-        'Content-Type'  => 'text/html',
-        'Cache-Control' => 'public, max-age=86400'
-      },
-      File.open('public/index.html', File::RDONLY)
-    ]
+    body = File.open('public/index.html', File::RDONLY)
+
+    headers = {
+      'Content-Type'  => 'text/html',
+      'Cache-Control' => 'public, max-age=86400'
+    }
+    response = Rack::Response.new body, 200, headers
+    response.set_cookie(";-p", {value: "Kontribusi yuuk di https://github.com/fauzanqadri/string_match", path: "/", expires: Time.now+24*60*60})
+    response.finish
   }
 end
 
