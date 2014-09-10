@@ -55,7 +55,8 @@ class String
   end
 
   def to_boyer_moore_badcharacter_heuristic
-    (0...(self.size)).inject({}){|hash, i| hash[self[i]] = (self.size - i - 1); hash}
+    # (0...(self.size)).inject({}){|hash, i| hash[self[i]] = (self.size - i - 1); hash}
+    (0...(self.size)).inject({}){|hash, i| hash[self[i]] = i; hash}
   end
 
   def to_boyer_moore_suffixes
