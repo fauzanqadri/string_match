@@ -16,7 +16,7 @@ class BoyerMoore
     s = 0
     while s <= haystack.size - needle.size
       j = needle.size
-      while (j > 0) && needle_matches?(needle[j - 1], haystack[s + j - 1])
+      while(j > 0) && (needle[j-1].eql?(haystack[s + j - 1]))
         j -= 1
       end
       if j > 0
@@ -31,10 +31,6 @@ class BoyerMoore
         return s
       end
     end
-    return nil
-  end
-
-  def needle_matches? needle, haystack
-    needle == haystack
+    # return nil
   end
 end

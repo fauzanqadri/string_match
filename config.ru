@@ -39,7 +39,7 @@ map '/calculate' do
     robin_karp_result = nil
     boyer_moore_result = nil
     robin_karp = RobinKarp.new(request_hash)
-    boyer_moore = BoyerMoore.new(request_hash[:second_text], request_hash[:first_text])
+    boyer_moore = BoyerMoore.new(request_hash[:first_text], request_hash[:second_text])
     start_karp = Time.now
     robin_karp_result = robin_karp.coeffision_similarity
     stop_karp = Time.now
@@ -48,6 +48,7 @@ map '/calculate' do
     boyer_moore_result = boyer_moore.result
     stop_moore = Time.now
     moore_running_time = stop_moore - start_moore
+    puts boyer_moore.result
     response_body = {
       robin_karp: {
         first_text_ngram: robin_karp.first_text.downcase.to_ngram(request_hash[:ngram]).to_s,
