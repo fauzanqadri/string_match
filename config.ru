@@ -40,6 +40,9 @@ map '/calculate' do
     boyer_moore_result = nil
     robin_karp = RobinKarp.new(request_hash)
     boyer_moore = BoyerMoore.new(request_hash[:first_text], request_hash[:second_text])
+    boyer_moore_second_text_suffixes = request_hash[:second_text].to_boyer_moore_suffixes
+    boyer_moore_second_text_goodsuffixes = request_hash[:second_text].to_boyer_moore_goodsuffix_heuristic
+    boyer_moore_second_text_boyer_table = request_hash[:second_text].to_boyer_moore_badcharacter_heuristic
     start_karp = Time.now
     robin_karp_result = robin_karp.coeffision_similarity
     stop_karp = Time.now
@@ -59,11 +62,14 @@ map '/calculate' do
         second_text_fingerprint: robin_karp.second_text_fingerprints.to_s,
         similar_fingerprint: robin_karp.similar_fingerprint.to_s,
         result: robin_karp_result,
-        karp_runing_time: karp_running_time.to_s
+        karp_runing_time: format("%.6f", karp_running_time)
       },
       boyer_moore: {
+        second_text_suffixes: boyer_moore_second_text_suffixes.to_s,
+        second_text_boyer_table: boyer_moore_second_text_boyer_table.to_s,
+        second_text_goodsuffixes: boyer_moore_second_text_goodsuffixes.to_s,
         result: boyer_moore_result,
-        moore_runing_time: moore_running_time.to_s
+        moore_runing_time: format("%.6f", moore_running_time)
       }
     }
     [

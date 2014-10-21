@@ -7,3 +7,16 @@ body
 {
   margin-top: 40px;
 }
+
+.status
+{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.status .panel-title
+{
+  font-family: 'Oswald', sans-serif;
+  font-size: 72px;
+  font-weight: bold;
+  color: #fff;
+}
+
