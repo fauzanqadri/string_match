@@ -48,10 +48,10 @@ map '/calculate' do
     stop_karp = Time.now
     karp_running_time = stop_karp - start_karp
     start_moore = Time.now
-    boyer_moore_result = boyer_moore.result
+    boyer_moore_location = boyer_moore.result
     stop_moore = Time.now
     moore_running_time = stop_moore - start_moore
-    puts boyer_moore.result
+    boyer_moore_result = boyer_moore.similarities
     response_body = {
       robin_karp: {
         first_text_ngram: robin_karp.first_text.downcase.to_ngram(request_hash[:ngram]).to_s,
@@ -68,6 +68,7 @@ map '/calculate' do
         second_text_suffixes: boyer_moore_second_text_suffixes.to_s,
         second_text_boyer_table: boyer_moore_second_text_boyer_table.to_s,
         second_text_goodsuffixes: boyer_moore_second_text_goodsuffixes.to_s,
+        location: boyer_moore_location,
         result: boyer_moore_result,
         moore_runing_time: format("%.6f", moore_running_time)
       }
