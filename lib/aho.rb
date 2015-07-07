@@ -46,7 +46,7 @@ class Aho
       second_text_ngram: second_text_ngram,
       first_text_match_pattern: first_text_match_pattern,
       second_text_match_pattern: second_text_match_pattern,
-      similar_matching: similar_matching,
+      similar_matching_pattern: similar_matching_pattern,
       coeffision_similarity: coeffision_similarity
     }
   end

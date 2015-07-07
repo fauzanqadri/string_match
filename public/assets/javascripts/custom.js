@@ -21,21 +21,36 @@ $(document).ready(function(){
             $("#result").show();
             $("#action").show();
             $("#input").fadeIn("slow", function(){
-              $("#first_text_ngram").val(data.robin_karp.first_text_ngram);
-              $("#second_text_ngram").val(data.robin_karp.second_text_ngram);
-              $("#first_text_hash").val(data.robin_karp.first_text_hashes);
-              $("#second_text_hash").val(data.robin_karp.second_text_hashes);
-              $("#first_text_fingerprint").val(data.robin_karp.first_text_fingerprint);
-              $("#second_text_fingerprint").val(data.robin_karp.second_text_fingerprint);
-              $("#similarity_finger_print").val(data.robin_karp.similar_fingerprint);
-              $("#duplication").val(data.robin_karp.result + "%");
-              $("#second_text_suffixes").val(data.boyer_moore.second_text_suffixes);
-              $("#second_text_goodsuffixes").val(data.boyer_moore.second_text_goodsuffixes);
-              $("#second_text_boyer_table").val(data.boyer_moore.second_text_boyer_table);
-              $("#boyer_moore_text_location").val(data.boyer_moore.location)
-              $("#boyer_moore_duplication").val(data.boyer_moore.result + "%");
-              $("#robin_karp_running_time").text(data.robin_karp.karp_runing_time + " s");
-              $("#boyer_moore_running_time").text(data.boyer_moore.moore_runing_time + " s");
+              $("#robin_karp_first_text").val(data.robin_karp.first_text)
+              $("#robin_karp_first_text_ngram").val(data.robin_karp.first_text_ngram)
+              $("#robin_karp_first_text_hash").val(data.robin_karp.first_text_hashes)
+              $("#robin_karp_first_text_fingerprint").val(data.robin_karp.first_text_fingerprints)
+
+              $("#robin_karp_second_text").val(data.robin_karp.second_text)
+              $("#robin_karp_second_text_ngram").val(data.robin_karp.second_text_ngram)
+              $("#robin_karp_second_text_hash").val(data.robin_karp.second_text_hashes)
+              $("#robin_karp_second_text_fingerprint").val(data.robin_karp.second_text_fingerprints)
+
+              $("#robin_karp_similarity_fingerprint").val(data.robin_karp.similar_fingerprint)
+
+              $("#robin_karp_duplication").val(data.robin_karp.coeffision_similarity)
+
+
+              $("#aho_first_text").val(data.aho_corasick.first_text)
+              $("#aho_first_text_ngram").val(data.aho_corasick.first_text_ngram)
+              $("#aho_first_text_match_pattern").val(data.aho_corasick.first_text_match_pattern)
+
+              $("#aho_second_text").val(data.aho_corasick.second_text)
+              $("#aho_second_text_ngram").val(data.aho_corasick.second_text_ngram)
+              $("#aho_second_text_match_pattern").val(data.aho_corasick.second_text_match_pattern)
+
+              $("#aho_simmilar_matching_pattern").val(data.aho_corasick.similar_matching_pattern)
+
+              $("#aho_duplication").val(data.aho_corasick.coeffision_similarity)
+
+              $("#robin_karp_running_time").text(data.robin_karp.time_elapsed + " S")
+
+              $("#aho_running_time").text(data.aho_corasick.time_elapsed + " S")
             })
             $("#inputForm").hide();
           },

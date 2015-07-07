@@ -9,8 +9,8 @@
     <div id="heading">
       <div class="container">
         <div class="jumbotron">
-          <h1>Karp Moore !</h1>
-          <p>Selamat Datang di Aplikasi Karp Moore, applikasi ini dibuat bertujuan untuk melakukan perbandingan algoritma String Matching Robin Karp dan Boyer Moore,</p>
+          <h1>Karp Corasick !</h1>
+          <p>Selamat Datang di Aplikasi Karp Corasick, applikasi ini dibuat bertujuan untuk melakukan perbandingan algoritma String Matching Robin Karp dan Aho Corasick,</p>
           <p class="pull-right">Achmad Nur Soleh, S.Kom</p>
           <div class="clearfix"></div>
         </div>
@@ -32,58 +32,72 @@
           <div class="clearfix">
           </div>
           <hr />
-          <div id="result", style="display: none;">
+          <div id="result" style="display: none;">
             <ul class="nav nav-tabs" role="tablist">
               <li class="active"><a href="#robin_karp" role="tab" data-toggle="tab">Robin Karp</a></li>
-              <li><a href="#boyer_moore" role="tab" data-toggle="tab">Boyer Moore</a></li>
+              <li><a href="#aho_corasick" role="tab" data-toggle="tab">Aho Corasick</a></li>
               <li><a href="#running_time" role="tab" data-toggle="tab">Running Time</a></li>
             </ul>
+
             <div class="tab-content">
               <div class= "tab-pane fade in active" id="robin_karp">
-
                 <div class="form-horizontal" role="form">
                   <div class="col-md-6">
                     <div class="form-group">
+                      <label>Text Pertama</label>
+                      <div class="col-md-12">
+                        <textarea class="form-control" disabled id="robin_karp_first_text" rows="20" style="resize: none;"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
                       <label>nGram Text Pertama</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="first_text_ngram" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="robin_karp_first_text_ngram" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label>Hash Text Pertama</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="first_text_hash" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="robin_karp_first_text_hash" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label>Fingerprint Text Pertama</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="first_text_fingerprint" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="robin_karp_first_text_fingerprint" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="form-group">
+                      <label>Text Kedua</label>
+                      <div class="col-md-12">
+                        <textarea class="form-control" disabled id="robin_karp_second_text" rows="20" style="resize: none;"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
                       <label>nGram Text Kedua</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="second_text_ngram" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="robin_karp_second_text_ngram" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label>Hash Text Kedua</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="second_text_hash" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="robin_karp_second_text_hash" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label>Fingerprint Text Kedua</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="second_text_fingerprint" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="robin_karp_second_text_fingerprint" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
                   </div>
@@ -92,64 +106,94 @@
                   <div class="form-group">
                     <label>Similarity Fingerprint</label>
                     <div class="col-md-12">
-                      <textarea class="form-control" disabled id="similarity_finger_print" rows="20" style="resize: none;"></textarea>
+                      <textarea class="form-control" disabled id="robin_karp_similarity_fingerprint" rows="20" style="resize: none;"></textarea>
                     </div>
                   </div>
                   <br/>
                   <div class="form-group">
                     <label class="col-sm-1 control-label">Duplication</label>
                     <div class="col-md-11">
-                      <input type="text" class="form-control" id="duplication" disabled>
+                      <input type="text" class="form-control" id="robin_karp_duplication" disabled>
                     </div>
                   </div>
                   <div class="clearfix"></div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="boyer_moore">
+
+              <div class="tab-pane fade" id="aho_corasick">
                 <div class="form-horizontal" role="form">
+
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="control-label">Second Text suffixes</label>
+                      <label class="control-label">Text Pertama</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="second_text_suffixes" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="aho_first_text" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
+
                     <div class="form-group">
-                      <label class="control-label">Second Text Goodsuffix</label>
+                      <label class="control-label">nGram Text Pertama</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="second_text_goodsuffixes" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="aho_first_text_ngram" rows="20" style="resize: none;"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label">Match Pattern Text Pertama</label>
+                      <div class="col-md-12">
+                        <textarea class="form-control" disabled id="aho_first_text_match_pattern" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
                   </div>
+
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="control-label">Second Text Boyer Moore Table</label>
+                      <label class="control-label">Text Kedua</label>
                       <div class="col-md-12">
-                        <textarea class="form-control" disabled id="second_text_boyer_table" rows="20" style="resize: none;"></textarea>
+                        <textarea class="form-control" disabled id="aho_second_text" rows="20" style="resize: none;"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label">nGram Text Kedua</label>
+                      <div class="col-md-12">
+                        <textarea class="form-control" disabled id="aho_second_text_ngram" rows="20" style="resize: none;"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label">Match Pattern Text Kedua</label>
+                      <div class="col-md-12">
+                        <textarea class="form-control" disabled id="aho_second_text_match_pattern" rows="20" style="resize: none;"></textarea>
                       </div>
                     </div>
                   </div>
-                  <legend>Boyer Moore Result</legend>
+
+                  <hr />
+
                   <div class="form-group">
-                    <label class="control-label">Text Location</label>
+                    <label class="control-label">Kesamaan Patern Text</label>
                     <div class="col-md-12">
-                      <input type="text" name="text_location" id="boyer_moore_text_location" class="form-control" disabled/>
+                      <textarea class="form-control" disabled id="aho_simmilar_matching_pattern" rows="20" style="resize: none;"></textarea>
                     </div>
                   </div>
+
                   <div class="form-group">
                     <label class="control-label">Duplication</label>
                     <div class="col-md-12">
-                      <input type="text" name="text_duplication" id="boyer_moore_duplication" class="form-control" disabled/>
+                      <input type="text" name="text_duplication" id="aho_duplication" class="form-control" disabled/>
                     </div>
                   </div>
                   <div class="clearfix"></div>
                 </div>
               </div>
+
               <div class="tab-pane fade" id="running_time">
                 <br/>
                 <div class="row">
+
                   <div class="col-md-6">
-                    <div class="panel status panel-danger">
+                    <div class="panel status panel-info">
                       <div class="panel-heading">
                         <h1 class="panel-title text-center" id="robin_karp_running_time"></h1>
                       </div>
@@ -157,25 +201,19 @@
                         <strong>Robin Karp Running Time</strong>
                       </div>
                     </div>
-                    <div class="panel status panel-danger">
-                      <div class="panel-heading">
-                        <h1 class="panel-title text-center" id="robin_karp_running_time"></h1>
-                      </div>
-                      <div class="panel-body text-center">
-                        <strong>Robin Karp CPU Usage</strong>
-                      </div>
-                    </div>
                   </div>
+
                   <div class="col-md-6">
-                    <div class="panel status panel-success">
+                    <div class="panel status panel-info">
                       <div class="panel-heading">
-                        <h1 class="panel-title text-center" id="boyer_moore_running_time"></h1>
+                        <h1 class="panel-title text-center" id="aho_running_time"></h1>
                       </div>
                       <div class="panel-body text-center">
-                        <strong>Boyer Moore Runing Time</strong>
+                        <strong>Aho Corasick Runing Time</strong>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
