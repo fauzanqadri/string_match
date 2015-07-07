@@ -34,7 +34,7 @@ class Aho
   end
 
   def coeffision_similarity
-    ((2.0 * similar_matching_pattern.size.to_f) / ((first_text_ngram.size.to_f + second_text_ngram.size.to_f))) * 100.0
+    ((2.0 * similar_matching_pattern.size.to_f) / ((first_text_match_pattern.uniq.size.to_f + second_text_ngram.uniq.size.to_f))) * 100.0
   end
 
   def as_hash
