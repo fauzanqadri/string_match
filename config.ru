@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sprockets'
 require 'json'
+require 'benchmark'
 $:.unshift(File.join(File.dirname(__FILE__), 'lib'))
 require 'string'
 require 'robin_karp'
@@ -36,12 +37,20 @@ map '/calculate' do
     request_hash = req.POST.inject({}){|memo, (k, v)| memo[k.to_sym] = k == 'ngram' ? v.to_i : v; memo}
     robin_karp = RobinKarp.new(request_hash)
     aho_corasick = Aho.new(request_hash)
-    robin_karp_time_elapsed = Time.now
+    rk_time_elapsed = Benchmark.bm do |x|
+      x.report("Robin Karp") do
+        robin_karp.as_hash
+      end
+    end
+    aho_time_elapsed = Benchmark.bm do |x|
+      x.report("Aho Corasick") do
+        aho_corasick.as_hash
+      end
+    end
     rk_result = robin_karp.as_hash
-    rk_result.merge!(time_elapsed: (Time.now - robin_karp_time_elapsed))
-    aho_corasick_time_elapsed = Time.now
     ac_result = aho_corasick.as_hash
-    ac_result.merge!(time_elapsed: (Time.now - aho_corasick_time_elapsed))
+    rk_result.merge!(time_elapsed: rk_time_elapsed.first.real)
+    ac_result.merge!(time_elapsed: aho_time_elapsed.first.real)
     response_body = {
       robin_karp: rk_result,
       aho_corasick: ac_result
